@@ -1,0 +1,302 @@
+:root {
+  --bg: linear-gradient(180deg, #ffe6f1 0%, #cce8ff 100%);
+  --card: #fff;
+  --surface: #5a4c4c;
+  --muted: #867c7c;
+  --accent: #ff8fcf;
+  --accent-2: #a5d8ff;
+  --radius: 14px;
+  --gap: 1rem;
+  --max-width: 1100px;
+  --shadow: 0 8px 20px rgba(255, 182, 193, 0.4);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--surface);
+  line-height: 1.5;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* contenedor principal */
+main {
+  width: 100%;
+  max-width: var(--max-width);
+}
+
+/* header */
+.site-header {
+  width: 100%;
+  max-width: var(--max-width);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--accent);
+  text-shadow: 0 0 8px rgba(255, 143, 207, 0.3);
+}
+.tagline {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+.nav-list a, .nav-list button {
+  background: var(--accent-2);
+  border: none;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.3s;
+}
+.nav-list a:hover, .nav-list button:hover {
+  transform: scale(1.05);
+  background: var(--accent);
+}
+
+/* panels */
+.panel {
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: var(--radius);
+  padding: 18px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow);
+  border: 2px solid rgba(255, 143, 207, 0.2);
+}
+
+/* catálogo grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+.card {
+  background: #fff;
+  padding: 12px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  box-shadow: 0 6px 16px rgba(255, 182, 193, 0.3);
+  border: 1.5px solid rgba(255, 192, 203, 0.4);
+}
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #ffe6f1;
+}
+.card h4 {
+  margin: 0;
+  color: var(--accent);
+}
+.card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+button {
+  cursor: pointer;
+  background: var(--accent);
+  border: none;
+  color: #fff;
+  border-radius: 20px;
+  padding: 8px 12px;
+  font-weight: 500;
+  transition: background 0.3s, transform 0.2s;
+}
+button:hover {
+  background: var(--accent-2);
+  transform: scale(1.05);
+}
+
+input, select, textarea {
+  border-radius: 10px;
+  border: 1px solid rgba(255, 143, 207, 0.3);
+  padding: 10px;
+  background: #fff;
+  color: #555;
+}
+
+/* controles */
+.controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.visor-wrap {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#visor3D {
+  border-radius: 12px;
+  border: 2px solid rgba(255, 143, 207, 0.4);
+  background: linear-gradient(180deg, #ffe6f1, #cce8ff);
+}
+
+/* autenticación */
+.auth-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.auth-box {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 14px;
+  border-radius: 14px;
+  border: 2px solid rgba(255, 192, 203, 0.4);
+  box-shadow: 0 4px 12px rgba(255, 143, 207, 0.25);
+}
+.auth-box h3 {
+  color: var(--accent);
+  margin-top: 0;
+}
+.linklike {
+  background: none;
+  border: none;
+  color: var(--accent);
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* footer */
+.site-footer {
+  width: 100%;
+  max-width: var(--max-width);
+  text-align: center;
+  color: var(--muted);
+  padding-top: 8px;
+  font-size: 0.9rem;
+}
+
+/* dialog */
+dialog {
+  border-radius: 14px;
+  border: 2px solid rgba(255, 143, 207, 0.3);
+  padding: 16px;
+  background: #fffafc;
+  color: #333;
+  box-shadow: 0 8px 20px rgba(255, 182, 193, 0.4);
+}
+#cart-items {
+  max-height: 260px;
+  overflow: auto;
+  margin-bottom: 8px;
+}
+
+/* helpers */
+.hidden { display: none; }
+.badge {
+  background: var(--accent-2);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
+
+/* responsive */
+@media (max-width: 800px) {
+  .auth-wrap { grid-template-columns: 1fr; }
+  .nav-list { justify-content: center; }
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tienda de Relojes de Lujo 🕰️✨</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/763/763704.png" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="brand">
+      <h1>My Melody & Cinnamoroll Watches 💖</h1>
+      <p class="tagline">Relojes lindos, elegantes y con estilo pastel 🌸</p>
+    </div>
+
+    <nav>
+      <ul class="nav-list">
+        <li><a href="#catalogo">Catálogo</a></li>
+        <li><a href="#carrito">Carrito 🛍️</a></li>
+        <li><a href="#cuenta">Cuenta</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="catalogo" class="panel">
+      <h2>⌚ Catálogo de Relojes</h2>
+      <div class="grid" id="product-list"></div>
+    </section>
+
+    <section id="carrito" class="panel">
+      <h2>🛒 Tu Carrito</h2>
+      <ul id="cart-items"></ul>
+      <p><strong>Total:</strong> $<span id="cart-total">0</span> MXN</p>
+      <button id="checkout-btn">Finalizar compra 💕</button>
+    </section>
+
+    <section id="cuenta" class="panel">
+      <h2>👤 Mi Cuenta</h2>
+      <div class="auth-wrap">
+        <div class="auth-box">
+          <h3>Iniciar Sesión</h3>
+          <input type="text" id="login-user" placeholder="Usuario" />
+          <input type="password" id="login-pass" placeholder="Contraseña" />
+          <button onclick="login()">Entrar</button>
+        </div>
+
+        <div class="auth-box">
+          <h3>Crear Cuenta</h3>
+          <input type="text" id="new-user" placeholder="Nuevo usuario" />
+          <input type="password" id="new-pass" placeholder="Contraseña" />
+          <button onclick="register()">Registrar</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>🌸 Tienda de relojes de lujo estilo Sanrio — hecho con amor 💖</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
