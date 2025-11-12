@@ -1,66 +1,69 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tienda de Relojes de Lujo 🕰️✨</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/763/763704.png" />
-</head>
-<body>
+const productos = [
+  { id: 1, nombre: "Reloj My Melody Rosa", precio: 850, img: "https://cdn.pixabay.com/photo/2020/04/17/17/31/watch-5051734_1280.jpg" },
+  { id: 2, nombre: "Reloj Cinnamoroll Azul", precio: 900, img: "https://cdn.pixabay.com/photo/2016/11/29/05/08/watch-1869928_1280.jpg" },
+  { id: 3, nombre: "Reloj Sanrio Premium", precio: 1200, img: "https://cdn.pixabay.com/photo/2015/08/05/16/56/watch-876327_1280.jpg" },
+  { id: 4, nombre: "Reloj Corazón Brillante", precio: 1000, img: "https://cdn.pixabay.com/photo/2015/02/10/21/28/watch-631562_1280.jpg" }
+];
 
-  <header class="site-header">
-    <div class="brand">
-      <h1>My Melody & Cinnamoroll Watches 💖</h1>
-      <p class="tagline">Relojes lindos, elegantes y con estilo pastel 🌸</p>
-    </div>
+const lista = document.getElementById("product-list");
+productos.forEach(prod => {
+  const card = document.createElement("div");
+  card.className = "card";
+  card.innerHTML = `
+    <img src="${prod.img}" alt="${prod.nombre}">
+    <h4>${prod.nombre}</h4>
+    <p>$${prod.precio} MXN</p>
+    <button onclick="addToCart(${prod.id})">Agregar 💕</button>
+  `;
+  lista.appendChild(card);
+});
 
-    <nav>
-      <ul class="nav-list">
-        <li><a href="#catalogo">Catálogo</a></li>
-        <li><a href="#carrito">Carrito 🛍️</a></li>
-        <li><a href="#cuenta">Cuenta</a></li>
-      </ul>
-    </nav>
-  </header>
+let carrito = [];
 
-  <main>
-    <section id="catalogo" class="panel">
-      <h2>⌚ Catálogo de Relojes</h2>
-      <div class="grid" id="product-list"></div>
-    </section>
+function addToCart(id) {
+  const producto = productos.find(p => p.id === id);
+  carrito.push(producto);
+  renderCart();
+}
 
-    <section id="carrito" class="panel">
-      <h2>🛒 Tu Carrito</h2>
-      <ul id="cart-items"></ul>
-      <p><strong>Total:</strong> $<span id="cart-total">0</span> MXN</p>
-      <button id="checkout-btn">Finalizar compra 💕</button>
-    </section>
+function renderCart() {
+  const items = document.getElementById("cart-items");
+  items.innerHTML = "";
+  let total = 0;
+  carrito.forEach((p, i) => {
+    const li = document.createElement("li");
+    li.innerHTML = `${p.nombre} - $${p.precio} <button onclick="removeFromCart(${i})">❌</button>`;
+    items.appendChild(li);
+    total += p.precio;
+  });
+  document.getElementById("cart-total").textContent = total;
+}
 
-    <section id="cuenta" class="panel">
-      <h2>👤 Mi Cuenta</h2>
-      <div class="auth-wrap">
-        <div class="auth-box">
-          <h3>Iniciar Sesión</h3>
-          <input type="text" id="login-user" placeholder="Usuario" />
-          <input type="password" id="login-pass" placeholder="Contraseña" />
-          <button onclick="login()">Entrar</button>
-        </div>
+function removeFromCart(i) {
+  carrito.splice(i, 1);
+  renderCart();
+}
 
-        <div class="auth-box">
-          <h3>Crear Cuenta</h3>
-          <input type="text" id="new-user" placeholder="Nuevo usuario" />
-          <input type="password" id="new-pass" placeholder="Contraseña" />
-          <button onclick="register()">Registrar</button>
-        </div>
-      </div>
-    </section>
-  </main>
+document.getElementById("checkout-btn").addEventListener("click", () => {
+  if (carrito.length === 0) alert("Tu carrito está vacío 💔");
+  else {
+    alert("Gracias por tu compra, linda 💖✨");
+    carrito = [];
+    renderCart();
+  }
+});
 
-  <footer class="site-footer">
-    <p>🌸 Tienda de relojes de lujo estilo Sanrio — hecho con amor 💖</p>
-  </footer>
+function login() {
+  const user = document.getElementById("login-user").value;
+  const pass = document.getElementById("login-pass").value;
+  if (user && pass) alert(`Bienvenida, ${user} 🌷`);
+  else alert("Completa tus datos 💕");
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+function register() {
+  const user = document.getElementById("new-user").value;
+  const pass = document.getElementById("new-pass").value;
+  if (user && pass) alert(`Cuenta creada, ${user} 💫`);
+  else alert("Falta rellenar tus datos 🌸");
+}
+
